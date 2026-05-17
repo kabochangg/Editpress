@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editpress</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Editpress</p>
+        <h1>記事ネタ収集と下書き作成</h1>
+      </div>
+      <div class="status" id="apiStatus">確認中</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls">
+        <label>
+          ジャンル
+          <select id="genre">
+            <option>AI活用</option>
+            <option>生成AI</option>
+            <option>アプリ</option>
+            <option>専門業界向け記事</option>
+            <option>ニュース解説</option>
+          </select>
+        </label>
+
+        <label>
+          キーワード
+          <input id="keywords" placeholder="例: ChatGPT 業務効率化 医療">
+        </label>
+
+        <fieldset>
+          <legend>情報源</legend>
+          <label class="check"><input type="checkbox" id="official" checked>公式ブログ</label>
+          <label class="check"><input type="checkbox" id="news" checked>ニュース検索</label>
+          <label class="check"><input type="checkbox" id="social" checked>X / Twitter</label>
+        </fieldset>
+
+        <label>
+          編集メモ
+          <textarea id="notes" rows="4" placeholder="読者像、避けたい論点、入れたい観点など"></textarea>
+        </label>
+
+        <div class="actions">
+          <button id="collectButton">ネタを探す</button>
+          <button id="draftButton" disabled>本文を作る</button>
+          <button id="saveButton" disabled>Markdown保存</button>
+        </div>
+      </section>
+
+      <section class="panel ideas-panel">
+        <div class="section-head">
+          <h2>ネタ候補</h2>
+          <span id="ideaCount">0件</span>
+        </div>
+        <div id="ideas" class="ideas empty">条件を入力して「ネタを探す」を押してください。</div>
+      </section>
+
+      <section class="panel preview-panel">
+        <div class="section-head">
+          <h2>プレビュー</h2>
+          <span id="draftState">未作成</span>
+        </div>
+        <article id="preview" class="preview empty">本文生成後にMarkdownプレビューを表示します。</article>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
